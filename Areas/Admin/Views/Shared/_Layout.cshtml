@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+    <title> مدیریت سایت </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+   
+
+</head>
+
+<body class="theme-blush">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img class="zmdi-hc-spin" src="/Admin/assets/images/loader.svg" width="48" height="48"
+                    alt="Aero"></div>
+            <p>لطفا صبر کنید...</p>
+        </div>
+    </div>
+
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+
+    <!-- Main Search -->
+    <div id="search">
+        <button id="close" type="button" class="close btn btn-primary btn-icon btn-icon-mini btn-round">x</button>
+        <form>
+            <input type="search" value="" placeholder="جستجو..." />
+            <button type="submit" class="btn btn-primary">جستجو</button>
+        </form>
+    </div>
+
+    <!-- left Icon menu Sidebar -->
+    @* @Html.Partial("_partial_LeftSidebar_Admin")
+
+    <!--  Sidebar -->
+    @Html.Partial("_partial_Sidebar_Admin")
+
+    <!-- Right Sidebar -->
+    @Html.Partial("_partial_Setting_Admin") *@
+
+    <!-- Main Content -->
+
+    <section class="content">
+        @RenderBody()
+    </section>
+
+   
+
+</body>
+
+</html>

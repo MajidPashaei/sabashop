@@ -1,0 +1,42 @@
+@model sabashop.Models.VmModels.Vm_Slider
+
+
+
+<form action="/admin/slider/AddSlider" method="post" enctype="multipart/form-data">
+
+
+<label for="Title" class="btn btn-default">انتخاب لینک اصلی</label>
+<input type="text" asp-for="LinkTO">
+
+
+<label for="Image" class="btn btn-default">انتخاب تصویر اصلی</label>
+
+
+<input  asp-for="Img" type="file" accept="image/*" onchange="preview_image(event)">
+
+
+
+
+ <img id="output_image" height=330px width=355px>
+
+
+
+
+<button type="submit">send</button>
+
+
+</form>
+
+
+
+<!-- Basic Inputs end -->
+<script >
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>

@@ -1,0 +1,48 @@
+@model sabashop.Models.VmModels.Vm_Logotitle
+
+@if (ViewBag.msg != null)
+{
+    <p class="alert alert-info">@ViewBag.msg</p>
+}
+
+
+<form action="/admin/logo/add" method="post" enctype="multipart/form-data">
+
+
+<label for="Title" class="btn btn-default">انتخاب عنوان اصلی</label>
+<input type="text" asp-for="Title">
+
+
+<label for="Image" class="btn btn-default">انتخاب تصویر اصلی</label>
+
+
+<input  asp-for="Image" type="file" accept="image/*" onchange="preview_image(event)">
+
+
+
+
+ <img id="output_image" src="/fileupload/logo/@Model.Logo" height=330px width=355px>
+
+
+
+
+
+
+<button type="submit">send</button>
+
+
+</form>
+
+
+
+<!-- Basic Inputs end -->
+<script >
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>

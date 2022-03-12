@@ -1,0 +1,40 @@
+
+
+
+@if (ViewBag.msg != null)
+{
+    <p class="alert alert-info">@ViewBag.msg</p>
+}
+
+
+
+<table>
+  <tr>
+    <th>number</th>
+    <th>name</th>
+    <th>fathername</th>
+    <th>grandfathername</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+    @if (ViewBag.Show != null)
+    {
+        int i =  1;
+        foreach (var item in ViewBag.Show)
+        {
+            <tr>
+              <td>@i</td>
+              <td>@item.Name</td>
+              <td>@item.FatherName</td>
+              <td>@item.GrandFatherName</td>
+              <td>
+                  <a href="/admin/category/update/@item.Id">update</a>
+              </td>
+              <td>
+                  <a href="/admin/category/delete/@item.Id">delete</a>
+              </td>
+            </tr>
+            i++;
+        }
+    }
+</table>

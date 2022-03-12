@@ -1,0 +1,60 @@
+<table>
+  <tr>
+    <th>number</th>
+    <th>name</th>
+    <th>Count</th>
+    <th>catId</th>
+    <th>SiteCatId</th>
+    <th>Price</th>
+    <th>Offer</th>
+    <th>Image</th>
+    <th>update</th>
+    <th>delete</th>
+  </tr>
+    @if (ViewBag.Show != null)
+    {
+        int i =  1;
+        foreach (var item in ViewBag.Show)
+        {
+            <tr>
+              <td>@i</td>
+              <td>@item.Name</td>
+              <td>@item.CategoryName</td>
+              <td>@item.SiteCategory</td>
+              <td>@item.price</td>
+              <td>@item.Count</td>
+              <td>@item.offer</td>
+              <td>
+                  <img src="/fileUpload/product/@item.Image" style="width: 25%;" alt="تلوزیون سامسونگ">
+              </td>
+              <td>
+                  <a href="/admin/produtc/update/@item.Id">update</a>
+              </td>
+              <td>
+                  <a href="/admin/Product/Delete/?id=@item.Id">delete</a>
+              </td>
+            </tr>
+            i++;
+        }
+    }
+</table>
+
+
+    @if (ViewBag.Show != null)
+    {
+        int i =  1;
+        foreach (var item in ViewBag.Show)
+        {
+            foreach (var item1 in item.MoreImage)
+            {
+                <img src="/fileUpload/product/@item1.Image" style="width: 25%;" alt="">
+            }
+        }
+    }
+
+
+
+<h1 style="visibility: hidden;" >تلوزیون </h1>
+<h1 style="visibility: hidden;" >سامسونگ</h1>
+<h1 style="visibility: hidden;" >Tv</h1>
+<h1 style="visibility: hidden;" >Samsung</h1>

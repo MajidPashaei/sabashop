@@ -1,0 +1,30 @@
+@model sabashop.Models.VmModels.Vm_Category
+
+
+
+<form action="/admin/Category/AddFther" method="post" enctype="multipart/form-data">
+
+
+<label for="Title" class="btn btn-default">انتخاب نام اصلی</label>
+<input type="text" asp-for="Name">
+
+
+<label for="cars">Choose a fatehr:</label>
+<select asp-for="FatherName">
+  @if (ViewBag.Show != null)
+  {
+      foreach (var item in ViewBag.Show)
+      {
+          <option value="@item.Name,@item.Id">@item.Name</option>
+      }
+  }
+</select>
+
+
+
+<button type="submit">send</button>
+
+
+</form>
+
+
