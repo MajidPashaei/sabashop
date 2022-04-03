@@ -83,8 +83,8 @@ namespace sabashop.Migrations
                     b.Property<int>("IdUser")
                         .HasColumnType("int");
 
-                    b.Property<int>("RFactor")
-                        .HasColumnType("int");
+                    b.Property<long>("RFactor")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("TotalPrice")
                         .HasColumnType("bigint");
@@ -113,8 +113,8 @@ namespace sabashop.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("RFactor")
-                        .HasColumnType("int");
+                    b.Property<long>("RFactor")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("StatusPay")
                         .HasColumnType("bit");

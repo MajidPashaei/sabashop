@@ -7,6 +7,6 @@ namespace sabashop.Models.Entities
         public int IdProduct { get; set; }
         public int Count { get; set; }
         public long TotalPrice { get; set; }
-        public int RFactor { get; set; }
+        public long RFactor { get; set; }
     }
 }

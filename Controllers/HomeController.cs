@@ -3,35 +3,37 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using sabashop.Models;
+using sabashop.Models.Context;
 
 namespace sabashop.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ShopContext _db,IWebHostEnvironment  _env): base(_db,_env)
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
         {
+            saver();
+            var s= db.tbl_Products.ToList();
+            if (s!= null)
+            {
+                ViewBag.Show=s;
+            }
+            
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AddBuy(int id)
         {
+
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }

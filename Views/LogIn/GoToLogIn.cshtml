@@ -1,0 +1,41 @@
+@model sabashop.Models.VmModels.Vm_User
+
+<form action="/login/login" method="post" enctype="multipart/form-data">
+    
+    @if (ViewBag.msg != null)
+    {
+        <p class="alert alert-danger">@ViewBag.msg</p>
+    }
+
+
+
+
+    <label class="form-group has-float-label mb-4">
+        <input asp-for="Phone"  class="form-control" />
+        <span>نام کاربری</span>
+        
+    </label>
+
+    <label class="form-group has-float-label mb-4">
+        <input asp-for="Pass" class="form-control" type="password" placeholder="" />
+        <span>کلمه عبور</span>
+    </label>
+
+
+    <div class="checkbox clearfix">
+        <div class="form-check checkbox-theme">
+            <div class="form-group">
+                <img src="/login/GetCaptchaImage" class="img-thumbnail" alt="">
+                <label class="form-group ">
+                    <input type="text" asp-for="Captcha"  placeholder=" کد امنیتی   " required />
+                 </label>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-primary btn-lg btn-shadow" type="submit">ورود</button>
+    </div>
+</form>

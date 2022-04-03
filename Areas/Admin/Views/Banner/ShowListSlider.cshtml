@@ -1,0 +1,36 @@
+@if ( ViewBag.msg != null)
+{
+    <p class="alert alert-danger"> @ViewBag.msg</p>
+}
+
+
+
+
+
+<table>
+  <tr>
+    <th>number</th>
+    <th>img</th>
+    <th>link</th>
+    <th>Delete</th>
+    <th>update</th>
+  </tr>
+  @if (ViewBag.show != null)
+  {
+      int i = 1 ;
+      foreach (var item in ViewBag.show)
+      {
+        <tr style=" text-align: center;">
+          <td style=" text-align: center;">@i</td>
+          <td style=" text-align: center;">
+              <img src="/FileUpload/slider/@item.Image" style="width: 20%; text-align: center;" alt="">
+          </td>
+          <td>@item.LinkTO</td>
+          <td><a class="btn btn-sm btn-info" style=" text-align: center;" href="/admin/slider/DeletSlider/@item.Id">delete</a></td>
+
+          <td><a class="btn btn-sm btn-info" style=" text-align: center;" href="/admin/slider/GoToUpdate/@item.Id">update</a></td>
+        </tr>  
+        i++;
+      }
+  }
+</table>

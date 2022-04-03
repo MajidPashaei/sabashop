@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using sabashop.Models.Context;
+using sabashop.Models.Entities;
 using sabashop.Models.VmModels;
 namespace sabashop.Admin.Controllers
 {
@@ -26,24 +27,38 @@ namespace sabashop.Admin.Controllers
             {
                 return View();
             }
-            public IActionResult Add()
+            public async Task<IActionResult> Add(Vm_Product b)
             {
-                return View();
+                if (b != null)
+                {
+                    Tbl_Product c= new Tbl_Product();
+                    c.Name = b.Name;
+                    c.Count= b.Count;
+                    c.Offer = b.Offer;
+                    c.Price = b.Price;
+                    c.CategoryId = b.CategoryId;
+                    c.SiteCategoryId = b.SiteCategoryId;
+                    if (b.Img != null)
+                    {
+                        string FileExtension1 = Path.GetExtension(b.Img.FileName);
+                        string NewFileName = String.Concat(Guid.NewGuid().ToString(), FileExtension1);
+                        var path = $"{env.WebRootPath}\\fileupload\\Product\\{NewFileName}";
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await b.Img.CopyToAsync(stream);
+                        }
+                        c.Image = NewFileName;
+                    }
+                    db.tbl_Products.Add(c);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Show");
             }
-
-
-
-
-
         // ---------------------------------------Update
         public IActionResult Update()
         {
             return View();
         }
-
-
-
-
         // ---------------------------------------Show *
         public IActionResult Show()
     {
